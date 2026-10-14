@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@theme { --font-display: var(--font-orbitron); --font-sans: var(--font-inter); }
+body { background: #07070c; color: #e7e7ef; }
+.grid-bg { background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 40px 40px; }
+.card { @apply rounded-xl border border-white/10 bg-white/[0.03] hover:border-fuchsia-400/50 transition; }
