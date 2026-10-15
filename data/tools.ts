@@ -4,6 +4,8 @@ export type Category = "coding" | "browser" | "nocode" | "framework" | "voice" |
 export interface Tool {
   slug: string; name: string; url: string; summary: string; description: string;
   pricing: string; useCases: string[]; tier: Tier; score: number; categories: Category[];
+  /** Optional affiliate link. When set, outbound links use it with rel="sponsored noopener". */
+  affiliateUrl?: string;
 }
 
 export const tools: Tool[] = [
@@ -46,7 +48,7 @@ export const tools: Tool[] = [
   // Voice
   { slug: "vapi", name: "Vapi", url: "https://vapi.ai", summary: "Developer platform for building voice AI agents.", description: "Vapi orchestrates speech-to-text, LLMs and text-to-speech into low-latency phone and web voice agents with tool calling.", pricing: "Usage-based — see site", useCases: ["Phone agents", "Appointment booking", "Customer support lines"], tier: "S", score: 90, categories: ["voice"] },
   { slug: "retell-ai", name: "Retell AI", url: "https://www.retellai.com", summary: "Voice agent platform for call centers.", description: "Retell builds, tests and deploys AI phone agents with telephony, call analytics and integrations.", pricing: "Usage-based — see site", useCases: ["Inbound/outbound calls", "Call center automation"], tier: "A", score: 86, categories: ["voice"] },
-  { slug: "elevenlabs-agents", name: "ElevenLabs Agents", url: "https://elevenlabs.io/agents", summary: "Conversational voice agents built on ElevenLabs voices.", description: "ElevenLabs Agents (formerly Conversational AI) combines its speech models with LLMs, knowledge bases and telephony for realistic voice agents.", pricing: "Free tier plus paid plans — see site", useCases: ["Natural-sounding agents", "Multilingual voice"], tier: "A", score: 87, categories: ["voice"] },
+  { slug: "elevenlabs-agents", name: "ElevenLabs Agents", url: "https://elevenlabs.io/agents", affiliateUrl: "https://try.elevenlabs.io/ucnud15pnp5n", summary: "Conversational voice agents built on ElevenLabs voices.", description: "ElevenLabs Agents (formerly Conversational AI) combines its speech models with LLMs, knowledge bases and telephony for realistic voice agents.", pricing: "Free tier plus paid plans — see site", useCases: ["Natural-sounding agents", "Multilingual voice"], tier: "A", score: 87, categories: ["voice"] },
   { slug: "livekit-agents", name: "LiveKit Agents", url: "https://livekit.io", summary: "Open-source framework for realtime voice and video agents.", description: "LiveKit Agents runs realtime multimodal agents over WebRTC with turn detection, plugins for many STT/LLM/TTS providers and LiveKit Cloud.", pricing: "Open source; LiveKit Cloud usage-based — see site", useCases: ["Custom realtime voice stacks", "Video agents"], tier: "A", score: 85, categories: ["voice", "framework"] },
   { slug: "bland-ai", name: "Bland AI", url: "https://www.bland.ai", summary: "Enterprise AI phone calling platform.", description: "Bland automates phone calls with programmable conversational pathways and self-hosted infrastructure for enterprises.", pricing: "See site", useCases: ["High-volume outbound calls", "Enterprise phone ops"], tier: "B", score: 76, categories: ["voice"] },
   // Research
@@ -56,4 +58,5 @@ export const tools: Tool[] = [
   { slug: "elicit", name: "Elicit", url: "https://elicit.com", summary: "AI research assistant for scientific papers.", description: "Elicit searches academic literature, extracts data from papers and automates systematic review steps.", pricing: "Free tier plus paid plans — see site", useCases: ["Systematic reviews", "Academic research"], tier: "B", score: 78, categories: ["research"] },
 ];
 
+export const outboundLink = (t: Tool) => ({ href: t.affiliateUrl ?? t.url, rel: t.affiliateUrl ? "sponsored noopener" : "noopener", target: "_blank" as const });
 export const getTool = (slug: string) => tools.find((t) => t.slug === slug);
