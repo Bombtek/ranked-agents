@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="mx-auto max-w-6xl px-4 py-8 text-xs text-zinc-500 space-y-4">
             <div className="max-w-md"><NewsletterSignup compact /></div>
             <p>© {new Date().getFullYear()} Ranked Agents. Tiers and scores are editorial opinions. Pricing changes often — always check the official site.</p>
-            <p>Disclosure: some links on this site may become affiliate links in the future. We currently use no affiliate links.</p>
+            <p>Disclosure: some links are affiliate links; we may earn a commission at no cost to you. Rankings are not influenced by affiliate relationships. <Link href="/disclosure" className="underline hover:text-zinc-300">Read our disclosure</Link>.</p>
           </div>
         </footer>
         <Script src="https://subscribe-forms.beehiiv.com/attribution.js" strategy="afterInteractive" />
