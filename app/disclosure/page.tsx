@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Affiliate disclosure", description: "How Ranked Agents uses affiliate links.", alternates: { canonical: "/disclosure" } };
+export const metadata: Metadata = { title: "Affiliate disclosure", description: "How Ranked Agents uses affiliate links.", alternates: { canonical: "/disclosure" }, openGraph: { title: "Affiliate disclosure | Ranked Agents", description: "How Ranked Agents uses affiliate links.", url: "/disclosure" } };
 export default function Disclosure() {
   return (
     <div className="max-w-2xl space-y-4">

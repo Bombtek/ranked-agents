@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: `${SITE_NAME} — Tier list of AI agents & automation tools`, template: `%s | ${SITE_NAME}` },
   description: "S/A/B/C tier rankings of AI coding agents, browser agents, agent frameworks, voice agents and no-code automation tools.",
-  openGraph: { type: "website", siteName: SITE_NAME, url: SITE_URL, title: SITE_NAME, description: "The tier list for AI agents and automation tools." },
-  twitter: { card: "summary_large_image", title: SITE_NAME, description: "The tier list for AI agents and automation tools." },
+  openGraph: { type: "website", siteName: SITE_NAME, url: SITE_URL, title: `${SITE_NAME} — The AI agent tier list`, description: "S/A/B tier rankings of AI coding agents, browser agents, agent frameworks, voice agents and no-code automation tools." },
+  twitter: { card: "summary_large_image", site: "@RankedAgents", creator: "@RankedAgents" },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

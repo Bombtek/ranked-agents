@@ -11,7 +11,7 @@ export const dynamicParams = false;
 export function generateStaticParams() { return comparisons.map((c) => ({ slug: c.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const c = getComparison((await params).slug); if (!c) return {};
-  return { title: { absolute: c.title }, description: c.description, alternates: { canonical: `/compare/${c.slug}` }, openGraph: { title: c.title, description: c.description, url: `/compare/${c.slug}` } };
+  return { title: { absolute: c.title }, description: c.description, alternates: { canonical: `/compare/${c.slug}` }, openGraph: { title: `${c.title} | Ranked Agents`, description: c.description, url: `/compare/${c.slug}` } };
 }
 export default async function ComparePage({ params }: { params: Promise<{ slug: string }> }) {
   const c = getComparison((await params).slug); if (!c) notFound();
