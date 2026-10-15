@@ -23,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="font-display font-black text-lg tracking-wider"><span className="text-fuchsia-400">RANKED</span>AGENTS</Link>
             <Link href="/tools" className="text-zinc-300 hover:text-white">All tools</Link>
             <Link href="/best" className="text-zinc-300 hover:text-white">Rankings</Link>
+            <Link href="/compare" className="text-zinc-300 hover:text-white">Compare</Link>
             <Link href="/releases" className="text-zinc-300 hover:text-white">New releases</Link>
           </nav>
         </header>
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="max-w-md"><NewsletterSignup compact /></div>
             <p>© {new Date().getFullYear()} Ranked Agents. Tiers and scores are editorial opinions. Pricing changes often — always check the official site.</p>
             <p>Disclosure: some links are affiliate links; we may earn a commission at no cost to you. Rankings are not influenced by affiliate relationships. <Link href="/disclosure" className="underline hover:text-zinc-300">Read our disclosure</Link>.</p>
+            <p><Link href="/compare" className="underline hover:text-zinc-300">Compare AI tools</Link> · <Link href="/best" className="underline hover:text-zinc-300">Rankings</Link></p>
           </div>
         </footer>
         <Script src="https://subscribe-forms.beehiiv.com/attribution.js" strategy="afterInteractive" />

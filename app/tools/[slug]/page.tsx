@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { tools, getTool, outboundLink } from "@/data/tools";
 import { rankings } from "@/data/rankings";
+import { comparisonsForTool } from "@/data/compare";
 import { SITE_URL } from "@/lib/site";
 import { TierBadge } from "../../components";
 export const dynamicParams = false;
@@ -14,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
   const t = getTool((await params).slug); if (!t) notFound();
   const inRankings = rankings.filter((r) => r.picks.some((p) => p.tool === t.slug));
+  const compares = comparisonsForTool(t.slug);
   const jsonLd = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: t.name, url: t.url, description: t.description, applicationCategory: "DeveloperApplication",
     review: { "@type": "Review", author: { "@type": "Organization", name: "Ranked Agents" }, reviewRating: { "@type": "Rating", ratingValue: t.score, bestRating: 100, worstRating: 0 } },
     mainEntityOfPage: `${SITE_URL}/tools/${t.slug}` };
@@ -32,6 +34,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <section className="card p-5 md:col-span-3"><h2 className="font-display font-bold mb-2">Best for</h2><ul className="flex flex-wrap gap-2">{t.useCases.map((u) => <li key={u} className="rounded-md bg-white/5 px-3 py-1 text-sm">{u}</li>)}</ul></section>
       </div>
       {inRankings.length > 0 && <section><h2 className="font-display font-bold mb-2">Appears in</h2><div className="flex gap-3 flex-wrap">{inRankings.map((r) => <Link key={r.slug} href={`/best/${r.slug}`} className="text-fuchsia-300 hover:underline">{r.title}</Link>)}</div></section>}
+      {compares.length > 0 && <section><h2 className="font-display font-bold mb-2">Compare {t.name}</h2><div className="flex gap-3 flex-wrap">{compares.map((c) => <Link key={c.slug} href={`/compare/${c.slug}`} className="text-fuchsia-300 hover:underline">{c.h1.split(":")[0]}</Link>)}</div></section>}
     </article>
   );
 }
