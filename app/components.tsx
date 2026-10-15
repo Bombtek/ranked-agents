@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { tierColor } from "@/lib/site";
-import { outboundLink, type Tool } from "@/data/tools";
+import { type Tool } from "@/data/tools";
+import { OutboundLink } from "./outbound-link";
 export function TierBadge({ tier, big }: { tier: string; big?: boolean }) {
   return <span className={`inline-flex items-center justify-center rounded-md bg-gradient-to-br font-display font-black ${tierColor[tier]} ${big ? "h-16 w-16 text-4xl" : "h-8 w-8 text-lg"}`}>{tier}</span>;
 }
@@ -15,7 +16,7 @@ export function ToolCard({ t, rank, reason }: { t: Tool; rank?: number; reason?:
           <span className="font-display text-sm text-fuchsia-300">{t.score}</span>
         </div>
         <p className="text-sm text-zinc-400">{reason ?? t.summary}</p>
-        <a {...outboundLink(t)} className="relative z-10 mt-1 inline-block text-xs text-cyan-300 hover:underline">Visit ↗</a>
+        <OutboundLink tool={t} className="relative z-10 mt-1 inline-block text-xs text-cyan-300 hover:underline">Visit ↗</OutboundLink>
       </div>
     </div>
   );

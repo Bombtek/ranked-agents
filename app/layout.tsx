@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Orbitron, Inter } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { NewsletterSignup } from "./newsletter";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
@@ -37,6 +39,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </footer>
         <Script src="https://subscribe-forms.beehiiv.com/attribution.js" strategy="afterInteractive" />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
