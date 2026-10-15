@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Orbitron, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+import { NewsletterSignup } from "./newsletter";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron", weight: ["600", "800", "900"] });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -26,11 +28,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
         <footer className="border-t border-white/10 mt-16">
-          <div className="mx-auto max-w-6xl px-4 py-8 text-xs text-zinc-500 space-y-2">
+          <div className="mx-auto max-w-6xl px-4 py-8 text-xs text-zinc-500 space-y-4">
+            <div className="max-w-md"><NewsletterSignup compact /></div>
             <p>© {new Date().getFullYear()} Ranked Agents. Tiers and scores are editorial opinions. Pricing changes often — always check the official site.</p>
             <p>Disclosure: some links on this site may become affiliate links in the future. We currently use no affiliate links.</p>
           </div>
         </footer>
+        <Script src="https://subscribe-forms.beehiiv.com/attribution.js" strategy="afterInteractive" />
       </body>
     </html>
   );

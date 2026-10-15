@@ -3,6 +3,7 @@ import { tools } from "@/data/tools";
 import { rankings } from "@/data/rankings";
 import { releases } from "@/data/releases";
 import { TierBadge } from "./components";
+import { NewsletterSignup } from "./newsletter";
 export default function Home() {
   const tiers = ["S", "A", "B", "C"] as const;
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         <div className="flex items-baseline justify-between mb-6"><h2 className="font-display text-2xl font-black">Latest releases</h2><Link href="/releases" className="text-sm text-fuchsia-300">All releases →</Link></div>
         <div className="grid gap-3 md:grid-cols-2">{releases.slice(0, 4).map((r) => <a key={r.title} href={r.source} target="_blank" rel="noopener" className="card p-4"><p className="text-xs text-cyan-300 font-display">{r.date} · {r.product}</p><h3 className="font-semibold mt-1">{r.title}</h3><p className="text-sm text-zinc-400">{r.summary}</p></a>)}</div>
       </section>
+      <NewsletterSignup />
     </div>
   );
 }
