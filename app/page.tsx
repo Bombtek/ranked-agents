@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { tools } from "@/data/tools";
 import { rankings } from "@/data/rankings";
 import { releases } from "@/data/releases";
 import { TierBadge } from "./components";
 import { NewsletterSignup } from "./newsletter";
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 export default function Home() {
   const tiers = ["S", "A", "B", "C"] as const;
   return (
