@@ -45,7 +45,7 @@ export async function renderOg({ title, tagline, kicker, tier }: { title: string
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", height: 8, width: 420, borderRadius: 4, backgroundImage: "linear-gradient(90deg, #7c3aed, #22d3ee)" }} />
-          <div style={{ display: "flex", fontSize: 30, fontWeight: 700, color: "#e2e8f0" }}>ranked-agents.vercel.app</div>
+          <div style={{ display: "flex", fontSize: 30, fontWeight: 700, color: "#e2e8f0" }}>rankedagents.dev</div>
         </div>
       </div>
     ),

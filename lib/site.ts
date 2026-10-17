@@ -1,4 +1,4 @@
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://ranked-agents.vercel.app";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://rankedagents.dev";
 export const SITE_NAME = "Ranked Agents";
 export const tierColor: Record<string, string> = {
   S: "from-fuchsia-500 to-rose-500 text-white",

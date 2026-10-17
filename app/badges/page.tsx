@@ -3,6 +3,7 @@ import Link from "next/link";
 import { tools } from "@/data/tools";
 import { BADGE_WIDTH, BADGE_HEIGHT, badgeHtml, badgeMarkdown } from "@/lib/badge";
 import { BadgeEmbed } from "../badge-embed";
+import { SITE_URL } from "@/lib/site";
 
 const title = "Tier badges for tool makers";
 const description = "Embed a Ranked Agents tier badge on your website or GitHub README to show your AI agent or automation tool's S, A or B-tier ranking.";
@@ -19,7 +20,7 @@ export default function BadgesPage() {
         <h1 className="font-display text-4xl font-black">Tier badges for tool makers</h1>
         <p className="text-zinc-300">Every tool on Ranked Agents gets a free badge showing its current tier. Drop it on your landing page, docs or GitHub README. It&apos;s a lightweight SVG that stays crisp at any size and updates automatically if your tier changes.</p>
         <ul className="list-disc pl-5 text-sm text-zinc-400 space-y-1">
-          <li>Badge URL: <code className="text-cyan-200">https://ranked-agents.vercel.app/badge/&lt;slug&gt;</code></li>
+          <li>Badge URL: <code className="text-cyan-200">{SITE_URL}/badge/&lt;slug&gt;</code></li>
           <li>Find your snippet on your tool&apos;s page under <em>Embed your badge</em>, or copy it below.</li>
           <li>Tiers are editorial and can&apos;t be bought. See our <Link href="/disclosure" className="underline">disclosure</Link>.</li>
         </ul>
