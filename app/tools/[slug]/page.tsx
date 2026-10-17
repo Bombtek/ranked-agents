@@ -7,6 +7,8 @@ import { comparisonsForTool } from "@/data/compare";
 import { SITE_URL } from "@/lib/site";
 import { TierBadge } from "../../components";
 import { OutboundLink } from "../../outbound-link";
+import { BadgeEmbed } from "../../badge-embed";
+import { BADGE_WIDTH, BADGE_HEIGHT, badgeHtml, badgeMarkdown } from "@/lib/badge";
 export const dynamicParams = false;
 export function generateStaticParams() { return tools.map((t) => ({ slug: t.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -36,6 +38,11 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       </div>
       {inRankings.length > 0 && <section><h2 className="font-display font-bold mb-2">Appears in</h2><div className="flex gap-3 flex-wrap">{inRankings.map((r) => <Link key={r.slug} href={`/best/${r.slug}`} className="text-fuchsia-300 hover:underline">{r.title}</Link>)}</div></section>}
       {compares.length > 0 && <section><h2 className="font-display font-bold mb-2">Compare {t.name}</h2><div className="flex gap-3 flex-wrap">{compares.map((c) => <Link key={c.slug} href={`/compare/${c.slug}`} className="text-fuchsia-300 hover:underline">{c.h1.split(":")[0]}</Link>)}</div></section>}
+      <section id="badge" className="card p-5">
+        <h2 className="font-display font-bold mb-1">Embed your badge</h2>
+        <p className="text-sm text-zinc-400 mb-4">Built {t.name}? Show off its {t.tier}-tier ranking on your site or GitHub README. The badge updates automatically if the tier changes. <Link href="/badges" className="text-cyan-300 hover:underline">About badges</Link></p>
+        <BadgeEmbed name={t.name} tier={t.tier} src={`/badge/${t.slug}`} width={BADGE_WIDTH} height={BADGE_HEIGHT} html={badgeHtml(t)} markdown={badgeMarkdown(t)} />
+      </section>
     </article>
   );
 }
