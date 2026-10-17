@@ -16,7 +16,7 @@ const cursorRow: CompareRow = { tool: "cursor", pricing: "Free $0; paid plans fr
 const claudeCodeRow: CompareRow = { tool: "claude-code", pricing: "Included with Claude Pro ($17/mo annual, $20 monthly), Max from $100/mo, Team/Enterprise; or pay via API", freeTier: "No — Claude Code requires a paid plan or API usage", bestFor: "Terminal-first, autonomous multi-step engineering", hosting: "Local CLI, IDE, desktop and web" };
 const codexRow: CompareRow = { tool: "openai-codex", pricing: "Included in ChatGPT Free, Go $8/mo, Plus $20/mo, Pro from $100/mo, Business, Enterprise; or API-key usage", freeTier: "Yes — included in ChatGPT Free (limited)", bestFor: "ChatGPT users; parallel cloud tasks and GitHub PR reviews", hosting: "Local CLI/IDE/desktop + cloud sandboxes" };
 const copilotRow: CompareRow = { tool: "github-copilot", pricing: "Free $0; Pro $10/mo, Pro+ $39/mo, Max $100/mo; Business/Enterprise for orgs", freeTier: "Yes — limited chat and agent usage", bestFor: "Staying in your IDE; GitHub-native cloud agent and code review", hosting: "IDE extensions, CLI, github.com" };
-const windsurfRow: CompareRow = { tool: "windsurf", pricing: "Paid plans — check current pricing", freeTier: "Free tier available — check current pricing", bestFor: "Agentic IDE with the Cascade agent", hosting: "Desktop editor" };
+const windsurfRow: CompareRow = { tool: "windsurf", pricing: "Free $0; Pro $20/mo; Max $200/mo; Teams $80/mo + $40/mo per full seat; Enterprise custom (Devin pricing, verified Oct 17, 2026)", freeTier: "Yes — light agent quota, unlimited Tab completions", bestFor: "An IDE that doubles as a command center for local and cloud Devin agents", hosting: "Desktop editor + Devin Cloud agents" };
 const boltRow: CompareRow = { tool: "bolt-new", pricing: "Pro $25/mo (from 10M tokens); Teams $30/member/mo (billed monthly); Enterprise custom", freeTier: "Yes — 1M tokens/month (300K daily), Bolt branding", bestFor: "In-browser full-stack prototyping with real code", hosting: "Bolt hosting (custom domains on Pro)" };
 const lovableRow: CompareRow = { tool: "lovable", pricing: "Credit-based plans (Pro, Business, Enterprise), not per seat — check current pricing", freeTier: "Yes — 5 build credits/day (up to 30/month) + 20 Cloud credits/month", bestFor: "Non-technical builders shipping full-stack web apps", hosting: "Lovable Cloud" };
 const v0Row: CompareRow = { tool: "v0", pricing: "Free $0; paid team plans include $30/user/mo credits; Business $100/user/mo; Enterprise custom", freeTier: "Yes — 7 messages/day", bestFor: "React/Next.js UI and apps on Vercel", hosting: "Deploys to Vercel" };
@@ -187,21 +187,22 @@ export const comparisons: Comparison[] = [
     ],
   },
   {
-    slug: "cursor-vs-windsurf", kind: "vs", h1: "Cursor vs Windsurf: which AI code editor wins?",
-    title: "Cursor vs Windsurf (2026): AI IDEs Compared",
-    description: "Cursor vs Windsurf: compare the two agentic AI code editors on pricing, free tiers, agents and who each one suits best.",
+    slug: "cursor-vs-windsurf", kind: "vs", h1: "Cursor vs Windsurf (now Devin Desktop): which AI code editor wins?",
+    title: "Cursor vs Windsurf / Devin Desktop (2026): AI IDEs Compared",
+    description: "Cursor vs Windsurf, now Devin Desktop: compare the two agentic AI code editors on pricing, free tiers, agents and who each one suits best.",
     tools: ["cursor", "windsurf"], rankings: ["coding-agents"],
-    verdict: "Both are VS Code–style editors with strong agents. Cursor is our higher-ranked pick thanks to cloud background agents, Projects and broad model choice. Windsurf's Cascade agent is a good fit if you prefer its flow-aware context tracking. Try both free tiers on a real task.",
+    verdict: "Both are VS Code–style editors with strong agents. Cursor is our higher-ranked pick thanks to cloud background agents, Projects and broad model choice. Windsurf is now Devin Desktop (renamed by Cognition in June 2026), and its Cascade agent has been replaced by Devin Local; pick it if you want one editor to run local and Devin Cloud agents side by side. Try both free tiers on a real task.",
     rows: [cursorRow, windsurfRow],
     picks: [
       { tool: "cursor", text: "You want the most mature AI editor, background cloud agents, PR review and many models to choose from." },
-      { tool: "windsurf", text: "You like an agent (Cascade) that follows your edits and terminal activity and makes multi-file changes with less prompting." },
+      { tool: "windsurf", text: "You want an editor built around managing many agents at once, local Devin Local agents plus Devin Cloud sessions on one Kanban board, and you may already pay for Devin." },
     ],
     faqs: [
-      { q: "Is Windsurf free?", a: "Windsurf offers a free tier plus paid plans. Prices change often — check current pricing on windsurf.com." },
+      { q: "What happened to Windsurf?", a: "Cognition renamed Windsurf to Devin Desktop on June 2, 2026, and windsurf.com now redirects to devin.ai/desktop. It is the same IDE with your settings carried over. The Cascade agent was replaced by Devin Local (Cascade was retired July 1, 2026)." },
+      { q: "Is Windsurf (Devin Desktop) free?", a: "Yes, there is a Free plan with a light agent quota and unlimited Tab completions. Pro is $20/month, Max $200/month, and Teams $80/month plus $40/month per full seat. Prices change often, so check devin.ai/pricing." },
       { q: "How much does Cursor cost?", a: "Cursor has a free plan with limited agent requests; paid plans range from $8/month (Plus) to $200/month (Ultra), with Teams from $30 per user per month." },
       { q: "Can I import my VS Code settings?", a: "Both editors are built on VS Code foundations and support importing extensions, themes and keybindings." },
-      { q: "Which is better for large codebases?", a: "Cursor's cloud agents and Projects (parallel subagents) suit long-running work on big repos; Windsurf's Cascade is strong for interactive multi-file edits." },
+      { q: "Which is better for large codebases?", a: "Cursor's cloud agents and Projects (parallel subagents) suit long-running work on big repos; Devin Desktop (formerly Windsurf) pairs its editor with Devin Local and Devin Cloud agents for the same kind of work." },
     ],
   },
   {
@@ -243,7 +244,7 @@ export const comparisons: Comparison[] = [
   {
     slug: "cursor-alternatives", kind: "alternatives", h1: "Best Cursor alternatives for AI coding",
     title: "Best Cursor Alternatives (2026): Claude Code, Copilot, Codex & More",
-    description: "Cursor alternatives compared: Claude Code, GitHub Copilot, OpenAI Codex, Windsurf, Cline and Aider on verified pricing and free tiers.",
+    description: "Cursor alternatives compared: Claude Code, GitHub Copilot, OpenAI Codex, Devin Desktop (formerly Windsurf), Cline and Aider on verified pricing and free tiers.",
     tools: ["cursor", "claude-code", "github-copilot", "openai-codex", "windsurf", "cline", "aider"], rankings: ["coding-agents"],
     verdict: "Cursor is still our favorite AI editor, but the right alternative depends on why you're leaving: Claude Code for terminal-first autonomy, Copilot to stay in your IDE, Codex if you already pay for ChatGPT, and Cline or Aider for open-source, bring-your-own-model control.",
     rows: [cursorRow, claudeCodeRow, copilotRow, codexRow, windsurfRow,
@@ -254,13 +255,13 @@ export const comparisons: Comparison[] = [
       { tool: "claude-code", text: "You want an agent that plans, edits, tests and iterates on big tasks from the terminal." },
       { tool: "github-copilot", text: "You want to keep your current IDE and use GitHub-native agents and reviews at a lower starting price." },
       { tool: "openai-codex", text: "You already have ChatGPT — Codex is included on every plan including Free." },
-      { tool: "windsurf", text: "You want another full AI IDE with a different agent style (Cascade)." },
+      { tool: "windsurf", text: "You want another full AI IDE, now centred on managing local and cloud Devin agents (this is Windsurf, renamed Devin Desktop in 2026)." },
       { tool: "cline", text: "You want an open-source VS Code agent and full control over which model you pay for." },
       { tool: "aider", text: "You like the terminal and want every AI edit auto-committed to git." },
     ],
     faqs: [
       { q: "What is the best free Cursor alternative?", a: "Aider and Cline are free, open-source tools (you pay only for model usage). Codex is included in ChatGPT Free, and GitHub Copilot Free offers limited chat and agent usage." },
-      { q: "What's the closest alternative to Cursor?", a: "Windsurf is the most similar — another AI-first editor built on VS Code foundations. GitHub Copilot in VS Code is the next closest." },
+      { q: "What's the closest alternative to Cursor?", a: "Devin Desktop (formerly Windsurf) is the most similar: another AI-first editor built on VS Code foundations. GitHub Copilot in VS Code is the next closest." },
       { q: "Is Claude Code a Cursor alternative?", a: "It overlaps but works differently: Claude Code is a terminal/IDE agent rather than an editor. Many developers run Claude Code inside Cursor's terminal." },
       { q: "Why switch from Cursor?", a: "Common reasons are cost at heavy usage, wanting a specific IDE (JetBrains, Xcode), preferring the terminal, or wanting open-source tools with your own model keys." },
     ],
