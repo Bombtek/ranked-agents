@@ -35,6 +35,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="max-w-md"><NewsletterSignup compact /></div>
             <p>© {new Date().getFullYear()} Ranked Agents. Tiers and scores are editorial opinions. Pricing changes often — always check the official site.</p>
             <p>Disclosure: some links are affiliate links; we may earn a commission at no cost to you. Rankings are not influenced by affiliate relationships. <Link href="/disclosure" className="underline hover:text-zinc-300">Read our disclosure</Link>.</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="uppercase tracking-wider text-[10px] text-zinc-500">Featured on</span>
+              <a href="https://startupbase.io/products/ranked-agents?utm_source=startupbase&utm_medium=badge&utm_campaign=launch-badge-dark" target="_blank" rel="noopener noreferrer" className="inline-block opacity-90 hover:opacity-100 transition-opacity">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://statics.startupbase.io/site/badges/launched-on-sb-dark.svg" alt="Launched on StartupBase" height={44} style={{ height: 44, width: "auto" }} />
+              </a>
+            </div>
             <p><Link href="/compare" className="underline hover:text-zinc-300">Compare AI tools</Link> · <Link href="/best" className="underline hover:text-zinc-300">Rankings</Link> · <Link href="/badges" className="underline hover:text-zinc-300">Badges for tool makers</Link></p>
           </div>
         </footer>
