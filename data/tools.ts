@@ -6,6 +6,12 @@ export interface Tool {
   pricing: string; useCases: string[]; tier: Tier; score: number; categories: Category[];
   /** Optional affiliate link. When set, outbound links use it with rel="sponsored noopener". */
   affiliateUrl?: string;
+  /** Agent-accessible: official MCP server. true ONLY if verified on the vendor's own docs/site; otherwise leave undefined ("not verified"). */
+  mcp?: boolean; mcpSource?: string;
+  /** Agent-accessible: documented public API or official SDK for driving the tool from code. Same verification rule as mcp. */
+  api?: boolean; apiSource?: string;
+  /** Optional short note shown next to the agent-access badges. */
+  agentNote?: string;
 }
 
 export const tools: Tool[] = [
@@ -60,6 +66,46 @@ export const tools: Tool[] = [
   { slug: "perplexity", name: "Perplexity", url: "https://www.perplexity.ai", summary: "Answer engine with cited search and research modes.", description: "Perplexity answers questions with live citations and offers a Research mode for deeper multi-step reports, plus Labs for generating assets.", pricing: "Free tier plus Pro/Max plans — see site", useCases: ["Fast cited answers", "Quick research"], tier: "A", score: 87, categories: ["research"] },
   { slug: "elicit", name: "Elicit", url: "https://elicit.com", summary: "AI research assistant for scientific papers.", description: "Elicit searches academic literature, extracts data from papers and automates systematic review steps.", pricing: "Free tier plus paid plans — see site", useCases: ["Systematic reviews", "Academic research"], tier: "B", score: 78, categories: ["research"] },
 ];
+
+// Agent access (MCP server / public API), verified against official vendor docs on 2026-10-21.
+// Only add an entry when confirmed on the vendor's own docs or site. Unlisted = "not verified" (never guess).
+type AgentAccess = Pick<Tool, "mcp" | "mcpSource" | "api" | "apiSource" | "agentNote">;
+const LIB = "Open-source library — agents use it directly in code.";
+const agentAccess: Record<string, AgentAccess> = {
+  "claude-code": { api: true, apiSource: "https://code.claude.com/docs/en/agent-sdk/overview" },
+  cursor: { api: true, apiSource: "https://cursor.com/docs/cloud-agent/api/endpoints" },
+  "openai-codex": { api: true, apiSource: "https://developers.openai.com/codex/sdk", agentNote: "The old codex mcp-server command was removed; use the Codex SDK / app server." },
+  devin: { mcp: true, mcpSource: "https://docs.devin.ai/work-with-devin/devin-mcp", api: true, apiSource: "https://docs.devin.ai/api-reference/overview" },
+  "replit-agent": { mcp: true, mcpSource: "https://docs.replit.com/chat/connect-through-mcp" },
+  lovable: { mcp: true, mcpSource: "https://docs.lovable.dev/integrations/lovable-mcp-server", api: true, apiSource: "https://docs.lovable.dev/integrations/lovable-api" },
+  v0: { api: true, apiSource: "https://v0.app/docs/api/v1" },
+  cline: { api: true, apiSource: "https://docs.cline.bot/sdk/reference/cline-core" },
+  "browser-use": { mcp: true, mcpSource: "https://docs.browser-use.com/cloud/guides/mcp-server", api: true, apiSource: "https://docs.browser-use.com/cloud/api-v4-overview" },
+  browserbase: { mcp: true, mcpSource: "https://github.com/browserbase/mcp-server-browserbase", api: true, apiSource: "https://docs.browserbase.com/reference/api/overview" },
+  manus: { api: true, apiSource: "https://open.manus.ai/docs/v2/introduction" },
+  skyvern: { mcp: true, mcpSource: "https://www.skyvern.com/docs/developers/getting-started/mcp", api: true, apiSource: "https://www.skyvern.com/docs/index" },
+  "retriever-ai": { mcp: true, mcpSource: "https://rtrvr.ai/docs", api: true, apiSource: "https://rtrvr.ai/docs" },
+  n8n: { mcp: true, mcpSource: "https://docs.n8n.io/connect/connect-to-n8n-mcp-server/", api: true, apiSource: "https://docs.n8n.io/connect/n8n-api/" },
+  zapier: { mcp: true, mcpSource: "https://zapier.com/mcp", api: true, apiSource: "https://docs.zapier.com/api-reference/overview" },
+  make: { mcp: true, mcpSource: "https://developers.make.com/mcp-server", api: true, apiSource: "https://developers.make.com/api-documentation" },
+  gumloop: { api: true, apiSource: "https://docs.gumloop.com/api-reference/getting-started" },
+  "relevance-ai": { mcp: true, mcpSource: "https://relevanceai.com/docs/integrations/mcp/mcp-server", api: true, apiSource: "https://relevanceai.com/docs/api-reference/authentication" },
+  langgraph: { mcp: true, mcpSource: "https://docs.langchain.com/langsmith/server-mcp", api: true, apiSource: "https://docs.langchain.com/langsmith/server-api-ref" },
+  "openai-agents-sdk": { agentNote: LIB },
+  crewai: { api: true, apiSource: "https://docs-platform.crewai.com/platform/en/guides/kickoff-crew" },
+  mastra: { agentNote: LIB }, agno: { agentNote: LIB }, "pydantic-ai": { agentNote: LIB },
+  "microsoft-agent-framework": { agentNote: LIB }, "google-adk": { agentNote: LIB },
+  vapi: { mcp: true, mcpSource: "https://docs.vapi.ai/sdk/mcp-server", api: true, apiSource: "https://docs.vapi.ai/api-reference" },
+  "retell-ai": { api: true, apiSource: "https://docs.retellai.com/api-references/overview" },
+  "elevenlabs-agents": { mcp: true, mcpSource: "https://elevenlabs.io/docs/eleven-agents/operate/hosted-mcp", api: true, apiSource: "https://elevenlabs.io/docs/api-reference/introduction" },
+  "livekit-agents": { api: true, apiSource: "https://docs.livekit.io/reference/other/roomservice-api/" },
+  "bland-ai": { mcp: true, mcpSource: "https://docs.bland.ai/integrations/mcp/overview", api: true, apiSource: "https://docs.bland.ai/api-v1/post/calls" },
+  "openai-deep-research": { api: true, apiSource: "https://developers.openai.com/api/docs/guides/deep-research" },
+  "gemini-deep-research": { api: true, apiSource: "https://ai.google.dev/gemini-api/docs/deep-research" },
+  perplexity: { mcp: true, mcpSource: "https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server", api: true, apiSource: "https://docs.perplexity.ai/docs/getting-started/overview" },
+  elicit: { mcp: true, mcpSource: "https://docs.elicit.com/", api: true, apiSource: "https://docs.elicit.com/" },
+};
+for (const t of tools) Object.assign(t, agentAccess[t.slug] ?? {});
 
 export const outboundLink = (t: Tool) => ({ href: t.affiliateUrl ?? t.url, rel: t.affiliateUrl ? "sponsored noopener" : "noopener", target: "_blank" as const });
 export const getTool = (slug: string) => tools.find((t) => t.slug === slug);

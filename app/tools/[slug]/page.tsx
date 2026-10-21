@@ -5,7 +5,7 @@ import { tools, getTool } from "@/data/tools";
 import { rankings } from "@/data/rankings";
 import { comparisonsForTool } from "@/data/compare";
 import { SITE_URL } from "@/lib/site";
-import { TierBadge } from "../../components";
+import { TierBadge, AgentAccessBadges, AGENT_ACCESS_EXPLAINER } from "../../components";
 import { OutboundLink } from "../../outbound-link";
 import { BadgeEmbed } from "../../badge-embed";
 import { BADGE_WIDTH, BADGE_HEIGHT, badgeHtml, badgeMarkdown } from "@/lib/badge";
@@ -35,6 +35,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <section className="card p-5 md:col-span-2"><h2 className="font-display font-bold mb-2">What it does</h2><p className="text-zinc-300">{t.description}</p></section>
         <section className="card p-5"><h2 className="font-display font-bold mb-2">Pricing</h2><p className="text-zinc-300">{t.pricing}</p></section>
         <section className="card p-5 md:col-span-3"><h2 className="font-display font-bold mb-2">Best for</h2><ul className="flex flex-wrap gap-2">{t.useCases.map((u) => <li key={u} className="rounded-md bg-white/5 px-3 py-1 text-sm">{u}</li>)}</ul></section>
+        <section id="agent-access" className="card p-5 md:col-span-3"><h2 className="font-display font-bold mb-2">Agent-accessible</h2><AgentAccessBadges t={t} showSources />{t.agentNote && <p className="text-sm text-zinc-300 mt-2">{t.agentNote}</p>}<p className="text-xs text-zinc-500 mt-2">{AGENT_ACCESS_EXPLAINER}</p></section>
       </div>
       {inRankings.length > 0 && <section><h2 className="font-display font-bold mb-2">Appears in</h2><div className="flex gap-3 flex-wrap">{inRankings.map((r) => <Link key={r.slug} href={`/best/${r.slug}`} className="text-fuchsia-300 hover:underline">{r.title}</Link>)}</div></section>}
       {compares.length > 0 && <section><h2 className="font-display font-bold mb-2">Compare {t.name}</h2><div className="flex gap-3 flex-wrap">{compares.map((c) => <Link key={c.slug} href={`/compare/${c.slug}`} className="text-fuchsia-300 hover:underline">{c.h1.split(":")[0]}</Link>)}</div></section>}

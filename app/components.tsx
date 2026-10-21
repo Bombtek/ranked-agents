@@ -21,3 +21,15 @@ export function ToolCard({ t, rank, reason }: { t: Tool; rank?: number; reason?:
     </div>
   );
 }
+
+export function AgentAccessBadges({ t, showSources }: { t: Tool; showSources?: boolean }) {
+  const item = (label: string, ok?: boolean, src?: string) => {
+    const cls = ok ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-300" : "border-white/10 bg-white/5 text-zinc-500";
+    const text = `${label}${ok ? " ✓" : " · not verified"}`;
+    return ok && src && showSources
+      ? <a key={label} href={src} target="_blank" rel="noopener" className={`rounded border px-1.5 py-0.5 text-[10px] font-display tracking-wide hover:underline ${cls}`}>{text} ↗</a>
+      : <span key={label} title={ok ? `Official ${label} verified` : `${label}: not verified`} className={`rounded border px-1.5 py-0.5 text-[10px] font-display tracking-wide ${cls}`}>{text}</span>;
+  };
+  return <span className="inline-flex flex-wrap gap-1">{item("MCP", t.mcp, t.mcpSource)}{item("API", t.api, t.apiSource)}</span>;
+}
+export const AGENT_ACCESS_EXPLAINER = "Agent-accessible shows whether other AI agents can reach a tool programmatically: an official MCP server (Model Context Protocol) and/or a documented public API or official SDK. We only mark ✓ after checking the vendor's own docs; anything else shows as not verified — not a confirmed no.";

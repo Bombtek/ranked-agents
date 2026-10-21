@@ -3,7 +3,7 @@ import Link from "next/link";
 import { tools } from "@/data/tools";
 import { rankings } from "@/data/rankings";
 import { releases } from "@/data/releases";
-import { TierBadge } from "./components";
+import { TierBadge, AGENT_ACCESS_EXPLAINER } from "./components";
 import { NewsletterSignup } from "./newsletter";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 export default function Home() {
@@ -22,9 +22,10 @@ export default function Home() {
           {tiers.map((tier) => { const row = tools.filter((t) => t.tier === tier).sort((a, b) => b.score - a.score); if (!row.length) return null; return (
             <div key={tier} className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3">
               <TierBadge tier={tier} big />
-              <div className="flex flex-wrap gap-2 items-center">{row.map((t) => <Link key={t.slug} href={`/tools/${t.slug}`} className="rounded-md bg-white/5 px-3 py-1.5 text-sm hover:bg-white/15">{t.name}</Link>)}</div>
+              <div className="flex flex-wrap gap-2 items-center">{row.map((t) => <Link key={t.slug} href={`/tools/${t.slug}`} className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-sm hover:bg-white/15">{t.name}{(t.mcp || t.api) && <span className="inline-flex gap-0.5">{t.mcp && <span title="Official MCP server (verified)" className="rounded border border-emerald-400/40 bg-emerald-400/10 px-1 text-[9px] font-display text-emerald-300">MCP</span>}{t.api && <span title="Public API / SDK (verified)" className="rounded border border-cyan-400/40 bg-cyan-400/10 px-1 text-[9px] font-display text-cyan-300">API</span>}</span>}</Link>)}</div>
             </div>); })}
         </div>
+        <p className="mt-3 text-xs text-zinc-500"><span className="rounded border border-emerald-400/40 bg-emerald-400/10 px-1 text-[9px] font-display text-emerald-300">MCP</span> <span className="rounded border border-cyan-400/40 bg-cyan-400/10 px-1 text-[9px] font-display text-cyan-300">API</span> = agent-accessible. {AGENT_ACCESS_EXPLAINER}</p>
       </section>
       <section>
         <h2 className="font-display text-2xl font-black mb-6">Rankings by use case</h2>
