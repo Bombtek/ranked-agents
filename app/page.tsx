@@ -27,6 +27,7 @@ export default function Home() {
         </div>
         <p className="mt-3 text-xs text-zinc-500"><span className="rounded border border-emerald-400/40 bg-emerald-400/10 px-1 text-[9px] font-display text-emerald-300">MCP</span> <span className="rounded border border-cyan-400/40 bg-cyan-400/10 px-1 text-[9px] font-display text-cyan-300">API</span> = agent-accessible. {AGENT_ACCESS_EXPLAINER}</p>
       </section>
+      <NewsletterSignup />
       <section>
         <h2 className="font-display text-2xl font-black mb-6">Rankings by use case</h2>
         <div className="grid gap-4 md:grid-cols-3">{rankings.map((r) => <Link key={r.slug} href={`/best/${r.slug}`} className="card p-5"><h3 className="font-display font-bold">{r.title}</h3><p className="text-sm text-zinc-400 mt-1">{r.blurb}</p></Link>)}</div>
@@ -35,7 +36,6 @@ export default function Home() {
         <div className="flex items-baseline justify-between mb-6"><h2 className="font-display text-2xl font-black">Latest releases</h2><Link href="/releases" className="text-sm text-fuchsia-300">All releases →</Link></div>
         <div className="grid gap-3 md:grid-cols-2">{releases.slice(0, 4).map((r) => <a key={r.title} href={r.source} target="_blank" rel="noopener" className="card p-4"><p className="text-xs text-cyan-300 font-display">{r.date} · {r.product}</p><h3 className="font-semibold mt-1">{r.title}</h3><p className="text-sm text-zinc-400">{r.summary}</p></a>)}</div>
       </section>
-      <NewsletterSignup />
     </div>
   );
 }

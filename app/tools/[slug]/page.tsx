@@ -6,6 +6,7 @@ import { rankings } from "@/data/rankings";
 import { comparisonsForTool } from "@/data/compare";
 import { SITE_URL } from "@/lib/site";
 import { TierBadge, AgentAccessBadges, AGENT_ACCESS_EXPLAINER } from "../../components";
+import { NewsletterSignup } from "../../newsletter";
 import { OutboundLink } from "../../outbound-link";
 import { BadgeEmbed } from "../../badge-embed";
 import { BADGE_WIDTH, BADGE_HEIGHT, badgeHtml, badgeMarkdown } from "@/lib/badge";
@@ -43,6 +44,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       {inRankings.length > 0 && <section><h2 className="font-display font-bold mb-2">Appears in</h2><div className="flex gap-3 flex-wrap">{inRankings.map((r) => <Link key={r.slug} href={`/best/${r.slug}`} className="text-fuchsia-300 hover:underline">{r.title}</Link>)}</div></section>}
       {compares.length > 0 && <section><h2 className="font-display font-bold mb-2">Compare {t.name}</h2><div className="flex gap-3 flex-wrap">{compares.map((c) => <Link key={c.slug} href={`/compare/${c.slug}`} className="text-fuchsia-300 hover:underline">{c.h1.split(":")[0]}</Link>)}</div></section>}
       {t.faqs && t.faqs.length > 0 && <section id="faq"><h2 className="font-display text-2xl font-bold mb-4">FAQ</h2><div className="space-y-3">{t.faqs.map((f) => <details key={f.q} className="card p-5" open><summary className="font-semibold cursor-pointer">{f.q}</summary><p className="text-zinc-300 mt-2">{f.a}</p>{f.links && f.links.length > 0 && <p className="text-sm mt-2 flex flex-wrap gap-x-3 gap-y-1">{f.links.map((l) => l.href.startsWith("/") ? <Link key={l.href} href={l.href} className="text-fuchsia-300 hover:underline">{l.label}</Link> : <a key={l.href} href={l.href} target="_blank" rel="noopener" className="text-cyan-300 hover:underline">{l.label} ↗</a>)}</p>}</details>)}</div></section>}
+      <NewsletterSignup title={`Track ${t.name}'s tier`} />
       <section id="badge" className="card p-5">
         <h2 className="font-display font-bold mb-1">Embed your badge</h2>
         <p className="text-sm text-zinc-400 mb-4">Built {t.name}? Show off its {t.tier}-tier ranking on your site or GitHub README. The badge updates automatically if the tier changes. <Link href="/badges" className="text-cyan-300 hover:underline">About badges</Link></p>
