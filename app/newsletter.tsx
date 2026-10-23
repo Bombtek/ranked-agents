@@ -23,8 +23,7 @@ export function NewsletterSignup({ compact = false, title = "Agent Patch Notes" 
       <div className="space-y-2">
         <p className="font-display text-sm font-bold text-white">Agent Patch Notes</p>
         <p className="text-xs text-zinc-400">Weekly agent release notes and tier changes. Free, every Friday.</p>
-        <BeehiivForm />
-        <a href={NEWSLETTER_URL} target="_blank" rel="noopener" className="text-xs text-fuchsia-300 hover:underline">Subscribe on beehiiv ↗</a>
+        <a href={`${NEWSLETTER_URL}/subscribe`} target="_blank" rel="noopener" className="inline-block rounded-md bg-fuchsia-500 px-3 py-1.5 text-xs font-semibold text-white hover:bg-fuchsia-400">Subscribe free</a>
       </div>
     );
   }
