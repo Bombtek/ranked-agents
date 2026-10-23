@@ -1,30 +1,20 @@
-"use client";
-import { useEffect, useRef } from "react";
-
 export const BEEHIIV_FORM_ID = "57aa9692-8abe-44f4-a86f-b226fe8ed114";
-export const BEEHIIV_LOADER = "https://subscribe-forms.beehiiv.com/v3/loader.js";
 export const NEWSLETTER_URL = "https://agentpatchnotes.beehiiv.com";
-const EMBED = `<script async src="${BEEHIIV_LOADER}" data-beehiiv-form="${BEEHIIV_FORM_ID}"></script>`;
+const FORM_SRC = `https://subscribe-forms.beehiiv.com/v3/forms/${BEEHIIV_FORM_ID}`;
 
-/** Renders the beehiiv embed in place. The tag is in the server HTML so it runs on first load;
- *  after client-side navigation (where innerHTML scripts are inert) we inject a live script. */
+/** Plain per-instance iframe: no shared loader script, so multiple instances on one page
+ *  and client-side navigation can't interfere with each other. */
 export function BeehiivForm() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const t = setTimeout(() => {
-      if (el.querySelector("iframe, form")) return;
-      el.innerHTML = "";
-      const s = document.createElement("script");
-      s.async = true;
-      s.src = BEEHIIV_LOADER;
-      s.setAttribute("data-beehiiv-form", BEEHIIV_FORM_ID);
-      el.appendChild(s);
-    }, 1500);
-    return () => clearTimeout(t);
-  }, []);
-  return <div ref={ref} className="min-h-[60px]" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: EMBED }} />;
+  return (
+    <iframe
+      src={FORM_SRC}
+      title="Subscribe to Agent Patch Notes"
+      loading="lazy"
+      scrolling="no"
+      className="block w-full rounded-lg border-0 bg-white"
+      style={{ height: 339 }}
+    />
+  );
 }
 
 export function NewsletterSignup({ compact = false, title = "Agent Patch Notes" }: { compact?: boolean; title?: string }) {
