@@ -21,7 +21,9 @@ export const rankings: Ranking[] = [
     { tool: "browserbase", reason: "Production browser infra plus Stagehand SDK." },
     { tool: "manus", reason: "Hands-off long tasks across browser and code." },
     { tool: "perplexity-comet", reason: "Agentic browsing built into your daily browser." },
-    { tool: "skyvern", reason: "Vision-based automation for form-heavy flows." } ] },
+    { tool: "skyvern", reason: "Vision-based automation for form-heavy flows." },
+    { tool: "browserless", reason: "Headless browsers you can run in the cloud or self-host." },
+    { tool: "tinyfish", reason: "Pay-as-you-go agent runs with free search and fetch APIs." } ] },
   { slug: "no-code-automation", title: "Best No-Code Automation Platforms", blurb: "Wire up apps and AI agents without writing code.", picks: [
     { tool: "n8n", reason: "Most powerful AI agent nodes and self-hostable." },
     { tool: "zapier", reason: "Largest integration library and easiest to start." },
