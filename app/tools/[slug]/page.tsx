@@ -38,7 +38,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <div><h1 className="font-display text-4xl font-black">{t.h1 ?? t.name}</h1><p className="text-zinc-400 mt-1">{t.summary}</p></div>
         <div className="ml-auto text-right"><div className="font-display text-5xl font-black text-fuchsia-300">{t.score}</div><div className="text-xs text-zinc-500">SCORE / 100</div></div>
       </div>
-      <OutboundLink tool={t} className="inline-block rounded-lg bg-fuchsia-500 px-5 py-2.5 font-semibold text-white hover:bg-fuchsia-400">Visit official site ↗</OutboundLink>{t.affiliateUrl && <p className="text-xs text-zinc-500">Affiliate link — <Link href="/disclosure" className="underline">disclosure</Link></p>}
+      <OutboundLink tool={t} className="inline-block rounded-lg bg-fuchsia-500 px-5 py-2.5 font-semibold text-white hover:bg-fuchsia-400">{t.affiliateUrl ? `Try ${t.name.replace(/ Agents$/, "")} ↗` : "Visit official site ↗"}</OutboundLink>{t.affiliateUrl && <p className="text-xs text-zinc-500">Some links are affiliate links; we may earn a commission at no cost to you. <Link href="/disclosure" className="underline">Disclosure</Link></p>}
       <div className="grid gap-4 md:grid-cols-3">
         <section className="card p-5 md:col-span-2"><h2 className="font-display font-bold mb-2">What it does</h2><p className="text-zinc-300">{t.description}</p></section>
         <section className="card p-5"><h2 className="font-display font-bold mb-2">Pricing</h2><p className="text-zinc-300">{t.pricing}</p></section>
