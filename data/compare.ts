@@ -515,10 +515,10 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "tinyfish-vs-browserbase", kind: "vs", h1: "TinyFish vs Browserbase: which is cheaper for AI web agents?",
-    title: "TinyFish vs Browserbase Pricing (2026): Real Costs Compared",
-    description: "TinyFish vs Browserbase pricing: $0.016 per agent step and $0.12/hour browsers with no subscription, vs $20–$99 plans with included hours. Worked examples inside.",
-    tools: ["tinyfish", "browserbase"], rankings: ["browser-agents"], verifiedOn: R_ON,
-    verdict: "TinyFish is the cheaper way to start. There's no subscription, new accounts get $8 in Wallet funds, TinySearch and TinyFetch are free within rate limits, and TinyAgent runs cost $0.016 per step with the LLM, residential proxies and anti-bot handling included. Browserbase fits teams that write their own automation on Playwright, Puppeteer, Selenium or Stagehand and want monthly plans with included hours, higher self-serve concurrency (25 to 100+ browsers) and session recordings. For raw browser time, TinyBrowser's $0.002 per minute is $0.12 per hour, the same as Browserbase Developer's overage rate.",
+    title: "TinyFish vs Browserbase (2026): Pricing, Features & Verdict",
+    description: "Pick TinyFish for pay-as-you-go agents with no monthly fee and free search. Pick Browserbase for Playwright or Stagehand at scale, with included hours.",
+    tools: ["tinyfish", "browserbase"], rankings: ["browser-agents"], verifiedOn: "November 14, 2026",
+    verdict: "Pick TinyFish if you want pay-as-you-go web agents with no subscription: new accounts get $8 in Wallet funds, TinySearch and TinyFetch are free within rate limits, and TinyAgent is $0.016 per step with the model, residential proxies and anti-bot handling included. Pick Browserbase if you write your own Playwright, Puppeteer, Selenium or Stagehand automation and want monthly plans with included hours, higher self-serve concurrency (25 to 100+ browsers) and session recordings. For raw browser time, TinyBrowser's $0.002 per minute is $0.12 per hour, the same as Browserbase Developer's overage rate.",
     rows: [tinyfishRow, browserbaseRow],
     sections: [
       { id: "pricing", heading: "TinyFish vs Browserbase pricing, line by line",
@@ -527,7 +527,7 @@ export const comparisons: Comparison[] = [
           ["Free to start", "$8 in Wallet funds for new accounts; no card needed to start", "Free plan: 1 browser hour, 3 Agent runs, $5 in model tokens"],
           ["Cloud browser", "TinyBrowser $0.002/minute ($0.12/hour)", "Developer $20/mo with 100 hours, then $0.12/hr; Startup $99/mo with 500 hours, then $0.10/hr"],
           ["AI web agent", "TinyAgent $0.016 per step, LLM inference included", "3 / 15 / 50 Agent runs on Free / Developer / Startup; models via Model Gateway at market price"],
-          ["Search API", "TinySearch $0 (30 requests/min, 500/hour)", "1,000 calls included, then $1–$7 per 1k depending on provider"],
+          ["Search API", "TinySearch $0 (30 requests/min, 500/hour)", "1,000 calls included, then $1–$12 per 1k depending on provider"],
           ["Fetch API", "TinyFetch $0 (150 URLs/min, 1,000/day)", "1,000 (Developer) or 10,000 (Startup) included, then $1 or $0.50 per 1k"],
           ["Residential proxies", "Included in TinyAgent and TinyBrowser runs", "1 GB on Developer then $12/GB; 5 GB on Startup then $10/GB"],
           ["Starting concurrency", "2 TinyAgent runs, 5 TinyBrowser sessions (raised on request)", "3 Free, 25 Developer, 100 Startup, 250+ Scale"],
@@ -540,7 +540,7 @@ export const comparisons: Comparison[] = [
           "For agent work, a 20-step TinyAgent run costs $0.32 with the model included. On Browserbase you pay for browser time plus model tokens at market price through its Model Gateway, or your own model provider's bill.",
           "Keep the limits in mind. TinyFish accounts start at 5 concurrent TinyBrowser sessions and 2 TinyAgent runs, and you raise them by talking to sales. Browserbase's paid self-serve plans start at 25 concurrent browsers.",
         ],
-        note: "Prices from tinyfish.ai/pricing and browserbase.com/pricing, checked October 28, 2026.",
+        note: "Prices from tinyfish.ai/pricing and browserbase.com/pricing, checked November 14, 2026.",
         links: [{ href: "https://www.tinyfish.ai/pricing", label: "TinyFish pricing" }, { href: "https://www.browserbase.com/pricing", label: "Browserbase pricing" }] },
       { id: "mcp", heading: "MCP and developer tools",
         paragraphs: [
@@ -562,6 +562,7 @@ export const comparisons: Comparison[] = [
       { tool: "browserbase", text: "Engineering teams running their own browser automation at scale who want plans with included hours, high concurrency, recordings and Stagehand." },
     ],
     faqs: [
+      { q: "Which should I pick, TinyFish or Browserbase?", a: "Pick TinyFish for pay-as-you-go agents, free search and fetch, and no monthly fee. Pick Browserbase if you run your own Playwright, Puppeteer, Selenium or Stagehand code and want plans with included hours, higher concurrency and session recordings." },
       { q: "How much does TinyFish cost?", a: "TinyFish is pay as you go with no subscription. TinyAgent costs $0.016 per step, TinyBrowser $0.002 per minute and TinyMonitor $0.005 per check. TinySearch and TinyFetch are $0 within their rate limits. New accounts start with $8 in Wallet funds, and deposits start at $10.", links: [{ href: "https://www.tinyfish.ai/pricing", label: "TinyFish pricing" }] },
       { q: "Is TinyFish cheaper than Browserbase?", a: "For low or bursty usage, yes: there's no monthly fee, and 100 hours of TinyBrowser time costs $12 versus Browserbase Developer's $20/month. At high volume Browserbase Startup's $0.10/hour overage beats TinyBrowser's $0.12/hour, though TinyFish includes residential proxies that Browserbase bills per GB." },
       { q: "Does TinyFish have a monthly plan?", a: "No. TinyFish has no recurring plans. You fund a prepaid Wallet and pay for the TinyAgent and TinyBrowser usage you run. Enterprise contracts are available." },
